@@ -177,3 +177,30 @@ def player_numbers(team_input)
   return numbers
 end
 
+def player_stats(player_name)
+  game_hash.each do |team, team_data|
+    team_data.each do |key, value|
+      if key ==:players
+        value.each do |player|
+          if player_name==player[:player_name]
+            return player
+          end 
+        end
+      end
+    end
+  end
+end
+
+def big_shoe_rebounds
+  max_shoe=0
+  rebounds=0
+  game_hash.each do |team, team_data|
+    team_data[:players].each do |player|
+      if player[:shoe] > max_shoe
+        max_shoe=player[:shoe]
+        rebounds=player[:rebounds]
+      end
+    end
+  end 
+rebounds
+end
